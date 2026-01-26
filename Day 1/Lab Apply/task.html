@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .hide{
+        display: none;
+    }
+    .pages{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .btns{
+        text-align: center;
+        width: 100%;
+    }
+    .btn{
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        width: 100px;
+        height: 50px;
+        background-color: #f1669a;
+        color: white;
+        font-size: larger;
+        border-radius: 5%;
+        border-style: groove;
+    }
+    .box{
+        text-align: center;
+        font-size: x-large;
+        border-width: 3px;
+        width: 500px;
+        height: 350px;
+        border-width: 3px;
+        /* border-style: unset; */
+        /* border-color: rgb(0, 38, 255); */
+        color:#f1669a;
+        background-color: aquamarine;
+    }
+
+</style>
+</head>
+<body>
+    <div class="btns">
+        <button id="About" class="btn">About</button>
+        <button id="Gallary" class="btn">Gallary</button>
+        <button id="Services" class="btn">Services</button>
+        <button id="Complain" class="btn">Complain</button>
+    </div>
+    <br><br><br>
+    <div class="pages">
+        <div id="box1" class="box hide">Story About snow man</div>
+        <div id="box2" class="box hide"> <img id="leftArrow" height="20px" width="20px" src="Task\left.png"> <img id="currentImg" src="Task\1.jpg" height="300px" width="300px"> <img id="rightArrow" height="20px" width="20px" src="Task\right.png"> </div>
+        <div id="box3" class="box hide"> here </div>
+        <div id="box4" class="box hide">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name">
+            <br>
+            <br>
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="email">
+            <br>
+            <br>
+            <label for="phone">Phone: </label>
+            <input type="tel" name="phone" id="phone">
+            <br>
+            <br>
+            <label for="complain">Complain</label>
+            <br>
+            <textarea name="complain" id="complain" rows="9" cols="40"></textarea>
+            <br>
+            <input type="button" value="send">
+        </div>
+        <div id="box5" class="box hide">
+            <span>Your complain is </span> <b id="complainValue"></b>
+            <br><br>
+            <span>Your name is </span> <b id="nameValue"></b>
+            <br><br>
+            <span>Your email is </span> <b id="emailValue"></b>
+            <br><br>
+            <span>Your phone is </span> <b id="phoneValue"></b>
+            <br><br><br>
+            <input type="button" value="Back to edit">
+        </div>
+    </div>
+    <script src="jquery-4.0.0.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            let cur;
+
+            $('#About').click(function()
+            {
+                if (cur)
+                    $(cur).toggleClass('hide');
+                cur = $('#box1');
+                $(cur).toggleClass('hide');
+            })
+            $('#Gallary').click(function()
+            {
+                if (cur)
+                    $(cur).toggleClass('hide');
+                cur = $('#box2');
+                $(cur).toggleClass('hide');
+            })
+            $('#Complain').click(function()
+            {
+                if (cur)
+                    $(cur).toggleClass('hide');
+                cur = $('#box4');
+                $(cur).toggleClass('hide');
+            })
+
+            var gal = {
+                cur:1
+            }
+            $('#leftArrow').click(function()
+            {
+                if (gal.cur == 1)
+                    return;
+                gal.cur--;
+                $('#currentImg').attr("src", "Task\\" + gal.cur + ".jpg")
+            })
+            $('#rightArrow').click(function()
+            {
+                if (gal.cur == 8)
+                return;
+                gal.cur++;
+                $('#currentImg').attr("src", "Task\\" + gal.cur + ".jpg")
+            })
+
+            $('input[type="button"][value="send"]').click(function()
+            {
+                $('#nameValue').text($('#name').val()).css("color", "black");
+                $('#emailValue').text($('#email').val()).css("color", "black");
+                $('#phoneValue').text($('#phone').val()).css("color", "black");
+                $('#complainValue').text($('#complain').val()).css("color", "black");
+                $(cur).toggleClass('hide');
+                cur = $('#box5')
+                $(cur).toggleClass('hide');
+            })
+
+            $('input[type="button"][value="Back to edit"]').click(function()
+            {
+                $(cur).toggleClass('hide');
+                cur = $('#box4')
+                $(cur).toggleClass('hide');
+            })
+        })
+    </script>
+</body>
+</html>
