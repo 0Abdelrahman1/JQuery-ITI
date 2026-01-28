@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="libs/jquery-4.0.0.min.js"></script>
+    <script src="libs/jquery-ui-1.14.1.custom/jquery-ui.js"></script>
+    <style>
+        img{
+            position: absolute;
+            top: 50px;
+        }
+        p{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <img src="Task\12.gif">
+    <p></p>
+    <script> 
+        $(document).ready(function()
+        {
+            $('img').animate({right:"0%"}, { duration:3000 , step:function()
+            {
+                $('p').text(`<img src="12.gif" style="left: ${$('img').css('left')}">`)
+            }})
+        })
+    </script>
+</body>
+</html>

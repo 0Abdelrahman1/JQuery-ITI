@@ -39,6 +39,22 @@
         color:#f1669a;
         background-color: aquamarine;
     }
+    .item{
+        text-align: center;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        width: 100px;
+        height: 50px;
+        background-color: #f1669a;
+        color: white;
+        font-size: larger;
+        border-radius: 5%;
+    }
+    #box3{
+        text-align: center;
+        position: absolute;
+        top: 44px;
+        left: 442px;
+    }
 
 </style>
 </head>
@@ -50,10 +66,17 @@
         <button id="Complain" class="btn">Complain</button>
     </div>
     <br><br><br>
+    <div id="box3" class="hide list">
+            <ul>
+                <li class="item">item#1</li>
+                <li class="item">item#2</li>
+                <li class="item">item#3</li>
+            </ul>
+    </div>
     <div class="pages">
         <div id="box1" class="box hide">Story About snow man</div>
         <div id="box2" class="box hide"> <img id="leftArrow" height="20px" width="20px" src="Task\left.png"> <img id="currentImg" src="Task\1.jpg" height="300px" width="300px"> <img id="rightArrow" height="20px" width="20px" src="Task\right.png"> </div>
-        <div id="box3" class="box hide"> here </div>
+        
         <div id="box4" class="box hide">
             <label for="name">Name: </label>
             <input type="text" name="name" id="name">
@@ -105,6 +128,21 @@
                 cur = $('#box2');
                 $(cur).toggleClass('hide');
             })
+            $('#Services').click(function()
+            {
+                if (cur)
+                    $(cur).toggleClass('hide');
+                if ($('#box3').is(cur))
+                {
+                    cur = undefined;
+                    return;
+                }
+                
+                cur = $('#box3');
+                cur.toggleClass('hide');
+                cur.hide();
+                cur.slideDown(1500);
+            })
             $('#Complain').click(function()
             {
                 if (cur)
@@ -126,7 +164,7 @@
             $('#rightArrow').click(function()
             {
                 if (gal.cur == 8)
-                return;
+                    return;
                 gal.cur++;
                 $('#currentImg').attr("src", "Task\\" + gal.cur + ".jpg")
             })
