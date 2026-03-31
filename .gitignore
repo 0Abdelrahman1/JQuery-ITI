@@ -20,3 +20,6 @@ Day */**
 # Unignore in Demo/** folder
 !Day */Demo/
 !Day */Demo/**
+
+
+*.pdf
